@@ -1,26 +1,34 @@
-    var count = 0;
-    $('td').on('click', function(){
+var count = 0;
+
+$('td').on('click', function(){
+
      if(count % 2 === 0){
         
-        $(this).text("x");
+      $(this).text("x");
       } else {
         
-        $(this).text("o")
-      }
-        console.log(count);
-        count++
+      $(this).text("o")
+      };
 
-        checkboard();
-
-        if (checkboard() === 1){
-
-          count = 0;
-          $('td').text("");
-
-        };
+  console.log(count);
+  count++
 
 
-      });
+  if (checkboard() === 1){
+
+  count = 0;
+  $('td').text("");
+
+  } else if (count > 8){
+
+  alert("Draw!");
+  count = 0;
+  $('td').text("");
+  };
+
+    checkboard();
+
+});
 
 function checkboard(){
 
@@ -33,7 +41,7 @@ function checkboard(){
  for (i = 0; i < wins.length; i++){
     
        if (wins[i][0].text() === 'x' && wins[i][1].text() === 'x' && wins[i][2].text() === 'x'){
-        
+
         alert("X Wins!");
         i = wins.length;
         return 1;
@@ -44,6 +52,7 @@ function checkboard(){
         alert("O Wins!");
         i = wins.length;
         return 1;
+
        };
 
   };
